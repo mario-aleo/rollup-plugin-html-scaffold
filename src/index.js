@@ -17,12 +17,12 @@ export default function htmlTemplate(options = {}) {
         readFile(input, (error, buffer) => {
           if (error) return reject(error);
 
-          const html = buffer.toString('utf8');
+          let html = buffer.toString('utf8');
 
           if (template) {
             Object.keys(template).forEach(key => {
               const regex = new RegExp(`<%= +${key} +%>`, 'g');
-              html.replace(regex, template[key]);
+              html = html.replace(regex, template[key]);
             });
           }
 

@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-html-scaffold",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTML template for Rollup",
   "keywords": [
     "rollup",
