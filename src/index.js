@@ -11,7 +11,7 @@ export default function htmlTemplate(options = {}) {
   return {
     name: 'html-scaffold',
     generateBundle(outputOptions) {
-      const bundle = outputOptions.file || outputOptions.dir;
+      const bundlePath = outputOptions.file ? path.dirname(outputOptions.file) : outputOptions.dir;
 
       return new Promise((resolve, reject) =>
         readFile(input, (error, buffer) => {
@@ -26,7 +26,7 @@ export default function htmlTemplate(options = {}) {
             });
           }
 
-          return promisify(writeFile, path.join(path.dirname(bundle), inputFile), html).then(
+          return promisify(writeFile, path.join(bundlePath, inputFile), html).then(
             () => resolve(),
             err => reject(err),
           );
