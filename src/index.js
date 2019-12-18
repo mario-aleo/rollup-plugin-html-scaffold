@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'fs';
 import path from 'path';
-import { promisify } from './promisify';
+import { promisify } from './promisify.js';
 
 export default function htmlTemplate(options = {}) {
   const { input, output, template } = options;
@@ -11,7 +11,7 @@ export default function htmlTemplate(options = {}) {
   return {
     name: 'html-scaffold',
     generateBundle(outputOptions) {
-      const bundle = outputOptions.file;
+      const bundle = outputOptions.file || outputOptions.dir;
 
       return new Promise((resolve, reject) =>
         readFile(input, (error, buffer) => {
